@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Football Tips - P3A</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Football Tips</h1>
+  <p><a href="index.html">← Back to Home</a></p>
+</header>
+
+<div class="container">
+  <!-- Tab Buttons -->
+  <div class="tab-buttons">
+    <button class="active" onclick="loadTab('yesterday-tips.html', this)">Yesterday's Tips</button>
+    <button onclick="loadTab('free-tips.html', this)">Free Tips</button>
+    <button onclick="loadTab('today-tips.html', this)">Today's Tips</button>
+  </div>
+
+  <!-- Tips content -->
+  <div id="tabContent"></div>
+</div>
+
+<footer>
+  &copy; 2026 Perfect 3 Accumulator P3A. All Rights Reserved.
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
