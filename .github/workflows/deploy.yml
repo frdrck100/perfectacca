@@ -1,6 +1,7 @@
 name: Deploy Web App to S3
 
 # Trigger deployment on push to main
+# Updated secrets
 on:
   push:
     branches:
