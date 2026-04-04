@@ -24,6 +24,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1  # Change to your S3 bucket region if different.
 
+      # Test with new keys
+
       # 3️⃣ Sync local files to S3
       - name: Deploy to S3
         run: |
