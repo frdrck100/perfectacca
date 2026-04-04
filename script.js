@@ -16,7 +16,7 @@ function loadTab(file, btn) {
     });
 }
 
-// Load Yesterday's Tips by default
+// Load Previous Tips by default
 document.addEventListener("DOMContentLoaded", () => {
   loadTab('yesterday-tips.html', document.querySelector('.tab-buttons button'));
 });
