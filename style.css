@@ -64,6 +64,9 @@ table {
   border-collapse: collapse;
   margin: 20px 0;
   font-size: 18px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 table th, table td {
@@ -73,16 +76,27 @@ table th, table td {
 }
 
 table th {
-  background-color: #6200EE;
+  background: linear-gradient(90deg, #6200EE, #3700B3);
   color: white;
+  font-weight: bold;
 }
 
 table tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #f9f9f9;
+}
+
+table tr:nth-child(odd) {
+  background-color: #ffffff;
 }
 
 table tr:hover {
-  background-color: #ddd;
+  background-color: #e0e0e0;
+  transform: scale(1.01);
+  transition: all 0.2s ease;
+}
+
+table td {
+  border-bottom: 1px solid #eee;
 }
 /* Tabs */
 .tab-buttons {
