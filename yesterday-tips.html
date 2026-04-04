@@ -6,6 +6,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="free-tips.html">Free Tips</a></li>
+    <li><a href="yesterday-tips.html">Yesterday Tips</a></li>
+    <li><a href="today-tips.html">Today Tips</a></li>
+    <li><a href="feedback.html">Feedback</a></li>
+  </ul>
+</nav>
   <header>
     <h1>Yesterday's Tips</h1>
   </header>
@@ -67,5 +76,20 @@
       </tr>
     </table>
   </div>
+
+<script>
+  // Show nav on scroll for mobile
+  window.addEventListener('scroll', function() {
+    const nav = document.querySelector('nav');
+    if (window.innerWidth <= 768) {
+      if (window.scrollY > 100) {
+        nav.classList.add('show');
+      } else {
+        nav.classList.remove('show');
+      }
+    }
+  });
+</script>
+
 </body>
 </html>
