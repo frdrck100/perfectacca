@@ -101,10 +101,10 @@ body {
   padding-top: 60px; /* Adjust for fixed nav */
 }
 
-/* Mobile: Hide nav initially, show on scroll */
+/* Mobile: keep nav visible on mobile devices */
 @media (max-width: 768px) {
   nav {
-    transform: translateY(-100%);
+    transform: translateY(0);
   }
   nav.show {
     transform: translateY(0);
