@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testimonials</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="fixed-feedback" href="feedback.html">Feedback</a>
+<button id="topButton" class="hidden" title="Back to top">↑</button>
+
+<header>
+  <h1>Testimonials</h1>
+  <p>Real feedback from our users.</p>
+</header>
+
+<div class="container testimonial-card">
+  <table class="testimonial-table">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Message</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>@goalgenius</td>
+        <td>Love the accuracy and design. This app is a winner.</td>
+        <td><span class="rating-stars">★★★★☆</span></td>
+      </tr>
+      <tr>
+        <td>@matchmaster</td>
+        <td>Very clean interface and the tips feel reliable. Great job!</td>
+        <td><span class="rating-stars">★★★★★</span></td>
+      </tr>
+      <tr>
+        <td>@bettorboss</td>
+        <td>The tables are easy to read and the predictions are useful.</td>
+        <td><span class="rating-stars">★★★★☆</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>
+  &copy; 2026 Perfect 3 Accumulator P3A. All Rights Reserved.
+</footer>
+
+<script>
+  const topButton = document.getElementById('topButton');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 200) {
+      topButton.classList.remove('hidden');
+    } else {
+      topButton.classList.add('hidden');
+    }
+  });
+  topButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+</body>
+</html>

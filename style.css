@@ -201,6 +201,52 @@ table tr:hover {
 table td {
   border-bottom: 1px solid #eee;
 }
+
+.testimonial-card {
+  width: 100%;
+  max-width: 1000px;
+}
+
+.testimonial-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.testimonial-table th,
+.testimonial-table td {
+  padding: 18px 16px;
+}
+
+.testimonial-table th {
+  font-size: 16px;
+  background: linear-gradient(135deg, #6200EE, #3700B3);
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.testimonial-table tbody tr {
+  background: #fafafa;
+}
+
+.testimonial-table tbody tr:nth-child(odd) {
+  background: #ffffff;
+}
+
+.rating-stars {
+  color: #FFC107;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+.testimonial-table td {
+  border-bottom: 1px solid #f0f0f0;
+}
+
 /* Tabs */
 .tab-buttons {
   display: flex;
