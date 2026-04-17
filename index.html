@@ -89,6 +89,11 @@
 </style>
 </head>
 <body>
+<nav>
+  <button id="themeToggle" class="theme-toggle" title="Toggle Dark Mode">🌙</button>
+  <div style="flex: 1;"></div>
+</nav>
+
 <a class="fixed-feedback" href="feedback.html">Feedback</a>
 <button id="topButton" class="hidden" title="Back to top">↑</button>
 
@@ -109,16 +114,6 @@
   &copy; 2026 Perfect 3 Accumulator P3A. All Rights Reserved.
 </footer>
 
-<script>
-  const topButton = document.getElementById('topButton');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 200) {
-      topButton.classList.remove('hidden');
-    } else {
-      topButton.classList.add('hidden');
-    }
-  });
-  topButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-</script>
+<script src="script.js"></script>
 </body>
 </html>

@@ -29,7 +29,49 @@ if (topButton) {
   topButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
-// Load Previous Tips by default
+// Theme Toggle Functionality
+function initializeTheme() {
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    updateThemeButton('☀️');
+  } else {
+    document.body.classList.remove('dark-mode');
+    updateThemeButton('🌙');
+  }
+}
+
+function toggleTheme() {
+  const isDark = document.body.classList.contains('dark-mode');
+  if (isDark) {
+    document.body.classList.remove('dark-mode');
+    localStorage.setItem('theme', 'light');
+    updateThemeButton('🌙');
+  } else {
+    document.body.classList.add('dark-mode');
+    localStorage.setItem('theme', 'dark');
+    updateThemeButton('☀️');
+  }
+}
+
+function updateThemeButton(icon) {
+  const btn = document.getElementById('themeToggle');
+  if (btn) {
+    btn.textContent = icon;
+  }
+}
+
+// Initialize theme on page load
 document.addEventListener("DOMContentLoaded", () => {
-  loadTab('yesterday-tips.html', document.querySelector('.tab-buttons button'));
+  initializeTheme();
+  const themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', toggleTheme);
+  }
+  
+  // Load Previous Tips by default on football tips page
+  const tabButtons = document.querySelector('.tab-buttons button');
+  if (tabButtons) {
+    loadTab('yesterday-tips.html', tabButtons);
+  }
 });

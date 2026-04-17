@@ -1,20 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap');
 
+/* Theme Variables */
+:root {
+  --bg-color: #f5f5f5;
+  --text-color: #333;
+  --header-bg: linear-gradient(90deg, #6200EE, #3700B3);
+  --border-color: #ddd;
+  --card-bg: #fff;
+  --card-shadow: rgba(0,0,0,0.1);
+  --feedback-bg: #e0e0e0;
+}
+
+body.dark-mode {
+  --bg-color: #1e1e1e;
+  --text-color: #e0e0e0;
+  --header-bg: linear-gradient(90deg, #1a1a2e, #16213e);
+  --border-color: #444;
+  --card-bg: #2d2d2d;
+  --card-shadow: rgba(0,0,0,0.5);
+  --feedback-bg: #3a3a3a;
+}
+
 /* Reset */
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Titillium Web', sans-serif; }
 
 body {
-  background: #f5f5f5;
+  background: var(--bg-color);
+  color: var(--text-color);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding-top: 60px; /* Adjust for fixed nav */
+  padding-top: 60px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 header {
   text-align: center;
   padding: 40px 20px;
-  background: linear-gradient(90deg, #6200EE, #3700B3);
+  background: var(--header-bg);
   color: white;
 }
 
@@ -42,7 +65,7 @@ header p { font-size: 18px; }
   text-align: center;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px var(--card-shadow);
   text-decoration: none;
 }
 
@@ -66,12 +89,34 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background: linear-gradient(90deg, #6200EE, #3700B3);
+  background: var(--header-bg);
   color: white;
   padding: 10px 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px var(--card-shadow);
   z-index: 1000;
   transition: transform 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.theme-toggle {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  background: rgba(255,255,255,0.4);
 }
 
 nav ul {
@@ -81,6 +126,7 @@ nav ul {
   display: flex;
   justify-content: center;
   gap: 20px;
+  flex: 1;
 }
 
 nav ul li {
@@ -135,7 +181,7 @@ nav ul li a:hover {
   justify-content: center;
   font-size: 20px;
   cursor: pointer;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  box-shadow: 0 6px 18px var(--card-shadow);
   transition: transform 0.2s ease, opacity 0.2s ease;
   opacity: 0.8;
   z-index: 1100;
@@ -149,6 +195,15 @@ nav ul li a:hover {
 #topButton.hidden {
   opacity: 0;
   pointer-events: none;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 13px;
+  color: var(--text-color);
+  background: var(--card-bg);
+  border-top: 1px solid var(--border-color);
 }
 
 /* Mobile: keep nav visible on mobile devices */
@@ -168,37 +223,39 @@ table {
   font-size: 16px;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px var(--card-shadow);
+  background: var(--card-bg);
+  color: var(--text-color);
 }
 
 table th, table td {
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   padding: 12px;
   text-align: left;
 }
 
 table th {
-  background: linear-gradient(90deg, #6200EE, #3700B3);
+  background: var(--header-bg);
   color: white;
   font-weight: bold;
 }
 
 table tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: var(--feedback-bg);
 }
 
 table tr:nth-child(odd) {
-  background-color: #ffffff;
+  background-color: var(--card-bg);
 }
 
 table tr:hover {
-  background-color: #e0e0e0;
+  background-color: var(--border-color);
   transform: scale(1.01);
   transition: all 0.2s ease;
 }
 
 table td {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .testimonial-card {
@@ -210,7 +267,7 @@ table td {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  background: white;
+  background: var(--card-bg);
   border-radius: 20px;
   overflow: hidden;
 }
@@ -222,18 +279,18 @@ table td {
 
 .testimonial-table th {
   font-size: 15px;
-  background: linear-gradient(135deg, #6200EE, #3700B3);
+  background: var(--header-bg);
   color: white;
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
 
 .testimonial-table tbody tr {
-  background: #fafafa;
+  background: var(--feedback-bg);
 }
 
 .testimonial-table tbody tr:nth-child(odd) {
-  background: #ffffff;
+  background: var(--card-bg);
 }
 
 .rating-stars {
@@ -243,7 +300,7 @@ table td {
 }
 
 .testimonial-table td {
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 /* Tabs */
@@ -270,16 +327,17 @@ table td {
 .tab-buttons button.active { background: #BB86FC; }
 
 #tabContent .tab-content {
-  background: linear-gradient(135deg, #BBDEFB, #E3F2FD);
+  background: var(--card-bg);
+  color: var(--text-color);
   padding: 18px;
   border-radius: 12px;
   margin-bottom: 12px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 6px var(--card-shadow);
 }
 
 #tabContent .premium { 
-  background: #E1BEE7;
-  color: gray;
+  background: var(--feedback-bg);
+  color: var(--text-color);
 }
 
 /* Feedback form */
@@ -295,9 +353,11 @@ table td {
 .feedback-form textarea {
   padding: 12px;
   border-radius: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
   font-size: 16px;
   width: 100%;
+  background: var(--card-bg);
+  color: var(--text-color);
 }
 
 .feedback-form button {
@@ -318,7 +378,9 @@ footer {
   text-align: center;
   padding: 15px;
   font-size: 14px;
-  color: #666;
+  color: var(--text-color);
+  background: var(--card-bg);
+  border-top: 1px solid var(--border-color);
 }
 
 /* Responsive */
@@ -326,4 +388,50 @@ footer {
   header h1 { font-size: 28px; }
   header p { font-size: 16px; }
   .box { font-size: 20px; padding: 25px; }
+}
+
+/* Advertisement Spaces */
+.ad-space {
+  width: 100%;
+  max-width: 728px;
+  height: 90px;
+  background: var(--card-bg);
+  border: 2px dashed var(--border-color);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  font-size: 14px;
+  margin: 20px 0;
+}
+
+/* Premium Content */
+.grayed-pick {
+  filter: blur(5px);
+  user-select: none;
+  cursor: not-allowed;
+}
+
+.unlock-btn {
+  padding: 12px 24px;
+  background: #FF9800;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  margin: 10px 0;
+}
+
+.unlock-btn:hover {
+  background: #e68a00;
+  transform: scale(1.05);
+}
+
+/* Table with Date Separators */
+table tr:nth-child(3n+4) {
+  border-bottom: 3px solid var(--text-color);
 }
