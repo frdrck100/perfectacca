@@ -16,6 +16,19 @@ function loadTab(file, btn) {
     });
 }
 
+// Scroll to top button functionality
+const topButton = document.getElementById('topButton');
+if (topButton) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 200) {
+      topButton.classList.remove('hidden');
+    } else {
+      topButton.classList.add('hidden');
+    }
+  });
+  topButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
 // Load Previous Tips by default
 document.addEventListener("DOMContentLoaded", () => {
   loadTab('yesterday-tips.html', document.querySelector('.tab-buttons button'));
