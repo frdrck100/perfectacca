@@ -16,6 +16,7 @@
       .grayed-pick {
         color: #999;
         font-style: italic;
+        filter: blur(5px);
       }
       .unlock-btn {
         background-color: #007bff;
@@ -32,28 +33,25 @@
     </style>
     <table>
       <tr>
-        <th>Match</th>
+        <th>Matches</th>
         <th>Market</th>
-        <th>Pick</th>
-        <th>Action</th>
+        <th>Picks</th>
       </tr>
       <tr>
-        <td>Pauli vs FC Cologne</td>
-        <td>GG/NG</td>
-        <td class="grayed-pick">Yes @1.85 🔒</td>
-        <td><button class="unlock-btn" onclick="alert('Payment coming soon!')">Click here to unlock</button></td>
-      </tr>
-      <tr>
-        <td>Sassuolo vs Como 1907</td>
-        <td>GG/NG</td>
-        <td class="grayed-pick">Yes @1.72 🔒</td>
-        <td><button class="unlock-btn" onclick="alert('Payment coming soon!')">Click here to unlock</button></td>
-      </tr>
-      <tr>
-        <td>Inter vs Cagliari</td>
-        <td>GG/NG</td>
-        <td class="grayed-pick">Yes @1.88 🔒</td>
-        <td><button class="unlock-btn" onclick="alert('Payment coming soon!')">Click here to unlock</button></td>
+        <td>
+          Pauli vs FC Cologne<br>
+          Sassuolo vs Como 1907<br>
+          Inter vs Cagliari
+        </td>
+        <td>
+          GG/NG<br>
+          GG/NG<br>
+          GG/NG
+        </td>
+        <td style="text-align: center;">
+          <div class="grayed-pick" style="margin-bottom: 15px;">Yes @1.85 🔒<br>Yes @1.72 🔒<br>Yes @1.88 🔒</div>
+          <button class="unlock-btn" onclick="alert('Payment coming soon!')">Click here to unlock</button>
+        </td>
       </tr>
     </table>
   </div>
