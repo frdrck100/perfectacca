@@ -431,7 +431,115 @@ footer {
   transform: scale(1.05);
 }
 
-/* Table with Date Separators */
-table tr:nth-child(3n+4) {
-  border-bottom: 3px solid var(--text-color);
+/* Download Button */
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: #4CAF50;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  margin-bottom: 10px;
+}
+
+.download-btn:hover {
+  background: #388e3c;
+  transform: translateY(-2px);
+}
+
+/* Print / PDF Styles */
+@media print {
+  /* Hide everything except the tips table */
+  nav,
+  .fixed-feedback,
+  #topButton,
+  .tab-buttons,
+  .ad-space,
+  .download-btn,
+  footer,
+  header p a,
+  .unlock-btn {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    padding-top: 0 !important;
+    font-size: 13px;
+  }
+
+  header {
+    background: linear-gradient(90deg, #6200EE, #3700B3) !important;
+    color: #fff !important;
+    padding: 20px !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .container {
+    padding: 10px !important;
+    gap: 10px !important;
+  }
+
+  /* Print branding watermark */
+  .container::before {
+    content: "Perfect 3 Accumulator (P3A) — Official Tips Report";
+    display: block;
+    text-align: center;
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 6px;
+  }
+
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    box-shadow: none !important;
+    font-size: 12px;
+    page-break-inside: auto;
+  }
+
+  table th {
+    background: #6200EE !important;
+    color: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  table th, table td {
+    border: 1px solid #bbb !important;
+    padding: 8px !important;
+  }
+
+  table tr {
+    page-break-inside: avoid;
+  }
+
+  table tr:nth-child(even) {
+    background-color: #f5f0ff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Footer print credit */
+  #tabContent::after {
+    content: "© 2026 Perfect 3 Accumulator P3A. All Rights Reserved.";
+    display: block;
+    text-align: center;
+    font-size: 10px;
+    color: #aaa;
+    margin-top: 16px;
+    border-top: 1px solid #ddd;
+    padding-top: 6px;
+  }
 }

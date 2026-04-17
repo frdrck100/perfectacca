@@ -61,6 +61,16 @@ function updateThemeButton(icon) {
   }
 }
 
+// Download current tips tab as PDF
+function downloadTips() {
+  const content = document.getElementById('tabContent');
+  if (!content || !content.innerHTML.trim()) {
+    alert('No tips data to download. Please select a tab first.');
+    return;
+  }
+  window.print();
+}
+
 // Initialize theme on page load
 document.addEventListener("DOMContentLoaded", () => {
   initializeTheme();
