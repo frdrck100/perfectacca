@@ -1,5 +1,59 @@
 <div class="tab-content">
-    <p>✅ Team M vs Team N</p>
-    <p>❌ Team O vs Team P (Premium 🔒) <button onclick="alert('Payment coming soon!')">Unlock</button></p>
-    <p>✅ Team Q vs Team R</p>
-</div>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      table th, table td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ddd;
+      }
+      table th {
+        background-color: #f5f5f5;
+        font-weight: bold;
+      }
+      .grayed-pick {
+        color: #999;
+        font-style: italic;
+      }
+      .unlock-btn {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      .unlock-btn:hover {
+        background-color: #0056b3;
+      }
+    </style>
+    <table>
+      <tr>
+        <th>Match</th>
+        <th>Market</th>
+        <th>Pick</th>
+        <th>Action</th>
+      </tr>
+      <tr>
+        <td>Pauli vs FC Cologne</td>
+        <td>GG/NG</td>
+        <td class="grayed-pick">Yes @1.85 🔒</td>
+        <td><button class="unlock-btn" onclick="alert('Payment coming soon!')">Click here to unlock</button></td>
+      </tr>
+      <tr>
+        <td>Sassuolo vs Como 1907</td>
+        <td>GG/NG</td>
+        <td class="grayed-pick">Yes @1.72 🔒</td>
+        <td><button class="unlock-btn" onclick="alert('Payment coming soon!')">Click here to unlock</button></td>
+      </tr>
+      <tr>
+        <td>Inter vs Cagliari</td>
+        <td>GG/NG</td>
+        <td class="grayed-pick">Yes @1.88 🔒</td>
+        <td><button class="unlock-btn" onclick="alert('Payment coming soon!')">Click here to unlock</button></td>
+      </tr>
+    </table>
+  </div>
