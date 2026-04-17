@@ -1,34 +1,39 @@
 <div class="tab-content">
     <style>
-      .tab-content {
+      .table-wrapper {
         max-height: 600px;
         overflow-y: auto;
         display: block;
+        border: 1px solid #ddd;
       }
       table {
         width: 100%;
         border-collapse: collapse;
       }
-      table th {
+      table thead {
         position: sticky;
         top: 0;
         background-color: #f5f5f5;
+        z-index: 10;
+      }
+      table th {
         font-weight: bold;
         padding: 10px;
         text-align: left;
         border: 1px solid #ddd;
-        z-index: 10;
       }
       table td {
         padding: 10px;
         text-align: left;
         border: 1px solid #ddd;
       }
-      table tr:nth-child(3n+4) {
+      table tbody tr:nth-child(3n) {
         border-bottom: 3px solid #333;
       }
     </style>
+    <div class="table-wrapper">
     <table>
+      <thead>
       <tr>
         <th>Date</th>
         <th>Match</th>
@@ -36,6 +41,8 @@
         <th>Pick</th>
         <th>Result</th>
       </tr>
+      </thead>
+      <tbody>
       <tr>
         <td rowspan="3">April 16, 2026</td>
         <td>Celta Vigo vs Freiburg</td>
@@ -340,5 +347,7 @@
         <td>Yes @1.60</td>
         <td>✅ Win</td>
       </tr>
+    </tbody>
     </table>
+    </div>
   </div>
