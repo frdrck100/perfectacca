@@ -1,17 +1,28 @@
 <div class="tab-content">
     <style>
+      .tab-content {
+        max-height: 600px;
+        overflow-y: auto;
+        display: block;
+      }
       table {
         width: 100%;
         border-collapse: collapse;
       }
-      table th, table td {
+      table th {
+        position: sticky;
+        top: 0;
+        background-color: #f5f5f5;
+        font-weight: bold;
         padding: 10px;
         text-align: left;
         border: 1px solid #ddd;
+        z-index: 10;
       }
-      table th {
-        background-color: #f5f5f5;
-        font-weight: bold;
+      table td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ddd;
       }
       table tr:nth-child(3n+4) {
         border-bottom: 3px solid #333;
@@ -28,27 +39,27 @@
       <tr>
         <td rowspan="3">April 16, 2026</td>
         <td>Celta Vigo vs Freiburg</td>
-        <td>GG/NG</td>
-        <td>Yes @1.89</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.82</td>
         <td>✅ Win</td>
       </tr>
       <tr>
         <td>Betis vs Braga</td>
-        <td>GG/NG</td>
-        <td>Yes @1.92</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.95</td>
         <td>✅ Win</td>
       </tr>
       <tr>
         <td>America MG vs Sampaio Correa</td>
-        <td>GG/NG</td>
-        <td>Yes @1.76</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.18</td>
         <td>✅ Win</td>
       </tr>
       <tr>
         <td rowspan="3">April 15, 2026</td>
         <td>APOEL vs Apollon</td>
-        <td>GG/NG</td>
-        <td>Yes @1.81</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.65</td>
         <td>✅ Win</td>
       </tr>
       <tr>
@@ -59,15 +70,15 @@
       </tr>
       <tr>
         <td>Bayern Munich vs Real Madrid</td>
-        <td>GG/NG</td>
-        <td>Yes @2.01</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @4.00</td>
         <td>✅ Win</td>
       </tr>
       <tr>
         <td rowspan="3">April 14, 2026</td>
         <td>Atl. Madrid vs Barcelona</td>
-        <td>GG/NG</td>
-        <td>Yes @1.95</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.28</td>
         <td>✅ Win</td>
       </tr>
       <tr>
@@ -78,15 +89,15 @@
       </tr>
       <tr>
         <td>Mekelle 70 vs Welwalo Adigrat</td>
-        <td>GG/NG</td>
-        <td>Yes @1.58</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.35</td>
         <td>✅ Win</td>
       </tr>
       <tr>
         <td rowspan="3">April 13, 2026</td>
         <td>Arba Menche vs St. George</td>
-        <td>GG/NG</td>
-        <td>Yes @1.63</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.42</td>
         <td>✅ Win</td>
       </tr>
       <tr>
@@ -97,27 +108,27 @@
       </tr>
       <tr>
         <td>Elversberg vs Schalke</td>
-        <td>GG/NG</td>
-        <td>Yes @1.79</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.15</td>
         <td>✅ Win</td>
       </tr>
       <tr>
         <td rowspan="3">April 12, 2026</td>
         <td>Paderborn vs Magdeburg</td>
-        <td>GG/NG</td>
-        <td>Yes @1.98</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.88</td>
         <td>✅ Win</td>
       </tr>
       <tr>
         <td>Ind. Rivadavia vs Argentinos Jrs</td>
-        <td>GG/NG</td>
-        <td>Yes @1.73</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.58</td>
         <td>✅ Win</td>
       </tr>
       <tr>
         <td>Estudiantes vs Union de Santa Fe</td>
-        <td>GG/NG</td>
-        <td>Yes @1.84</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.22</td>
         <td>✅ Win</td>
       </tr>
       <tr>
@@ -129,27 +140,27 @@
       </tr>
       <tr>
         <td>Paris FC vs Monaco</td>
-        <td>GG/NG</td>
-        <td>Yes @1.77</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.72</td>
         <td>✅ Win</td>
       </tr>
       <tr>
         <td>Marseille vs Metz</td>
-        <td>GG/NG</td>
-        <td>Yes @1.69</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.48</td>
         <td>✅ Win</td>
       </tr>
       <tr>
         <td rowspan="3">April 10, 2026</td>
         <td>Augsburg vs Hoffenheim</td>
-        <td>GG/NG</td>
-        <td>Yes @1.75</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.38</td>
         <td>✅ Win</td>
       </tr>
       <tr>
         <td>Bologna vs Aston Villa</td>
-        <td>GG/NG</td>
-        <td>Yes @1.88</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.62</td>
         <td>✅ Win</td>
       </tr>
       <tr>
@@ -161,8 +172,8 @@
       <tr>
         <td rowspan="3">April 9, 2026</td>
         <td>Al Ettifaq vs Al Riyadh</td>
-        <td>GG/NG</td>
-        <td>Yes @1.64</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.68</td>
         <td>✅ Win</td>
       </tr>
       <tr>
@@ -173,8 +184,8 @@
       </tr>
       <tr>
         <td>Goztepe vs Galatasaray</td>
-        <td>GG/NG</td>
-        <td>Yes @1.93</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.52</td>
         <td>✅ Win</td>
       </tr>
       <tr>
@@ -192,8 +203,8 @@
       </tr>
       <tr>
         <td>FC Nordsjaelland vs Broendby</td>
-        <td>GG/NG</td>
-        <td>Yes @1.85</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.25</td>
         <td>✅ Win</td>
       </tr>
       <tr>
@@ -205,27 +216,27 @@
       </tr>
       <tr>
         <td>Millwall vs Norwich City</td>
-        <td>GG/NG</td>
-        <td>Yes @1.80</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.12</td>
         <td>✅ Win</td>
       </tr>
       <tr>
         <td>Bayer Leverkusen vs Wolfsburg</td>
-        <td>GG/NG</td>
-        <td>Yes @1.99</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.95</td>
         <td>✅ Win</td>
       </tr>
       <tr>
         <td rowspan="3">April 6, 2026</td>
         <td>Borussia M'gladbach vs FC Heidenheim</td>
-        <td>GG/NG</td>
-        <td>Yes @1.83</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.45</td>
         <td>✅ Win</td>
       </tr>
       <tr>
         <td>Freiburg vs Bayern Munich</td>
-        <td>GG/NG</td>
-        <td>Yes @2.00</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.78</td>
         <td>✅ Win</td>
       </tr>
       <tr>
@@ -243,40 +254,40 @@
       </tr>
       <tr>
         <td>Eintracht Frankfurt vs FC Cologne</td>
-        <td>GG/NG</td>
-        <td>Yes @1.65</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.32</td>
         <td>✅ Win</td>
       </tr>
       <tr>
         <td>Valencia vs Celta Vigo</td>
-        <td>GG/NG</td>
-        <td>Yes @1.82</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.75</td>
         <td>✅ Win</td>
       </tr>
       <tr>
         <td rowspan="3">April 4, 2026</td>
         <td>Hoffenheim vs Mainz 05</td>
-        <td>GG/NG</td>
-        <td>Yes @1.67</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.08</td>
         <td>✅ Win</td>
       </tr>
       <tr>
         <td>Werder Bremen vs RB Leipzig</td>
-        <td>GG/NG</td>
-        <td>Yes @1.90</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.55</td>
         <td>✅ Win</td>
       </tr>
       <tr>
         <td>Charlton Athletic vs Bristol City</td>
-        <td>GG/NG</td>
-        <td>Yes @1.62</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.02</td>
         <td>✅ Win</td>
       </tr>
       <tr>
         <td rowspan="3">April 3, 2026</td>
         <td>Leicester City vs Preston North End</td>
-        <td>GG/NG</td>
-        <td>Yes @1.75</td>
+        <td>GG/Over 2.5</td>
+        <td>Yes/Yes @3.38</td>
         <td>✅ Win</td>
       </tr>
       <tr>
