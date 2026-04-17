@@ -6,6 +6,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  padding-top: 60px; /* Adjust for fixed nav */
 }
 
 header {
@@ -95,10 +96,6 @@ nav ul li a {
 
 nav ul li a:hover {
   background: rgba(255,255,255,0.2);
-}
-
-body {
-  padding-top: 60px; /* Adjust for fixed nav */
 }
 
 .fixed-feedback {

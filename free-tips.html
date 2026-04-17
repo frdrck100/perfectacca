@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Tips</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<a class="fixed-feedback" href="feedback.html">Feedback</a>
-<button id="topButton" class="hidden" title="Back to top">↑</button>
-  <header>
-    <h1>Free Tips</h1>
-  </header>
-  <div class="container">
+<div class="tab-content">
     <table>
       <tr>
         <th>Match</th>
@@ -31,19 +17,4 @@
         <td>✅ Home Win</td>
       </tr>
     </table>
-  </div>
-
-
-<script>
-  const topButton = document.getElementById('topButton');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 200) {
-      topButton.classList.remove('hidden');
-    } else {
-      topButton.classList.add('hidden');
-    }
-  });
-  topButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-</script>
-</body>
-</html>
+</div>

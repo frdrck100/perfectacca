@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Previous Tips</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<a class="fixed-feedback" href="feedback.html">Feedback</a>
-<button id="topButton" class="hidden" title="Back to top">↑</button>
-  <header>
-    <h1>Previous Tips</h1>
-  </header>
-  <div class="container">
+<div class="tab-content">
     <table>
       <tr>
         <th>Date</th>
@@ -87,32 +73,3 @@
       </tr>
     </table>
   </div>
-
-<script>
-  // Show nav on scroll for mobile
-  window.addEventListener('scroll', function() {
-    const nav = document.querySelector('nav');
-    if (window.innerWidth <= 768) {
-      if (window.scrollY > 100) {
-        nav.classList.add('show');
-      } else {
-        nav.classList.remove('show');
-      }
-    }
-  });
-</script>
-
-
-<script>
-  const topButton = document.getElementById('topButton');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 200) {
-      topButton.classList.remove('hidden');
-    } else {
-      topButton.classList.add('hidden');
-    }
-  });
-  topButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-</script>
-</body>
-</html>
