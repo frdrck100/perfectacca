@@ -89,20 +89,27 @@ document.addEventListener("DOMContentLoaded", () => {
       const message = document.getElementById('message').value;
       const statusDiv = document.getElementById('statusMessage');
       
+      if (!name || !email || !message) {
+        alert('Please fill in all fields');
+        return;
+      }
+      
       emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
         from_name: name,
         from_email: email,
         message: message,
         to_email: 'breselogan@gmail.com'
       }).then(() => {
-        statusDiv.innerHTML = '<p style="color: green;">✓ Feedback sent successfully!</p>';
+        alert('Your feedback was submitted successfully! Thank you for your feedback.');
+        statusDiv.innerHTML = '<p style="color: green; font-weight: bold;">✓ Feedback sent successfully!</p>';
         feedbackForm.reset();
         setTimeout(() => {
           statusDiv.innerHTML = '';
-        }, 3000);
+        }, 5000);
       }).catch(err => {
-        statusDiv.innerHTML = '<p style="color: red;">✗ Error sending feedback. Please try again.</p>';
-        console.error(err);
+        console.error('EmailJS Error:', err);
+        alert('Error sending feedback. Please make sure EmailJS is properly configured with your credentials. Error: ' + err.text);
+        statusDiv.innerHTML = '<p style="color: red; font-weight: bold;">✗ Error sending feedback. Please try again.</p>';
       });
     });
   }
