@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Feedback - P3A</title>
 <link rel="stylesheet" href="style.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
 <style>
   .ad-space {
     width: 100%;
@@ -38,12 +39,13 @@
 
 <div class="container">
   <div class="ad-space" style="width: 90%; max-width: 728px; height: 90px; margin-bottom: 30px;">📢 Advertisement Space</div>
-  <div class="feedback-form">
-    <input type="text" placeholder="Your Name">
-    <input type="email" placeholder="Email">
-    <textarea placeholder="Your Feedback"></textarea>
-    <button>Submit Feedback</button>
-  </div>
+  <form class="feedback-form" id="feedbackForm">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <textarea id="message" placeholder="Your Feedback" required></textarea>
+    <button type="submit">Submit Feedback</button>
+    <div id="statusMessage"></div>
+  </form>
   <div class="ad-space" style="width: 90%; max-width: 728px; height: 90px; margin-top: 30px;">📢 Advertisement Space</div>
 </div>
 

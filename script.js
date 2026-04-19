@@ -74,4 +74,36 @@ document.addEventListener("DOMContentLoaded", () => {
   if (tabButtons) {
     loadTab('yesterday-tips.html', tabButtons);
   }
+
+  // Initialize EmailJS
+  emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+  
+  // Handle feedback form submission
+  const feedbackForm = document.getElementById('feedbackForm');
+  if (feedbackForm) {
+    feedbackForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      const statusDiv = document.getElementById('statusMessage');
+      
+      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+        from_name: name,
+        from_email: email,
+        message: message,
+        to_email: 'breselogan@gmail.com'
+      }).then(() => {
+        statusDiv.innerHTML = '<p style="color: green;">✓ Feedback sent successfully!</p>';
+        feedbackForm.reset();
+        setTimeout(() => {
+          statusDiv.innerHTML = '';
+        }, 3000);
+      }).catch(err => {
+        statusDiv.innerHTML = '<p style="color: red;">✗ Error sending feedback. Please try again.</p>';
+        console.error(err);
+      });
+    });
+  }
 });
