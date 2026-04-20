@@ -96,8 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
       
-      // Show immediate feedback to user
-      alert('Your feedback was submitted successfully! Thank you for your feedback.');
       statusDiv.innerHTML = '<p style="color: green; font-weight: bold;">✓ Feedback sent successfully!</p>';
       feedbackForm.reset();
       
