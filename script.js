@@ -103,19 +103,25 @@ document.addEventListener("DOMContentLoaded", () => {
       
       // Try to send email with EmailJS (requires proper configuration)
       if (typeof emailjs !== 'undefined') {
-        emailjs.send('service_4qdvesq', 'template_73gvxy8', {
+        const templateParams = {
           name: name,
           from_email: email,
           message: message,
           to_email: 'breselogan@gmail.com'
-        }).then(response => {
-          console.log('Email sent successfully!', response);
-        }).catch(err => {
-          console.error('EmailJS Error - Make sure credentials are configured:', err);
-          statusDiv.innerHTML += '<p style="color: orange; font-size: 12px;">Note: Email delivery requires EmailJS setup. See console for details.</p>';
-        });
+        };
+        
+        emailjs.send('service_4qdvesq', 'template_73gvxy8', templateParams)
+          .then(response => {
+            console.log('Email sent successfully!', response);
+            statusDiv.innerHTML = '<p style="color: green; font-weight: bold;">✓ Email received! Thank you.</p>';
+          })
+          .catch(err => {
+            console.error('EmailJS Error:', err);
+            statusDiv.innerHTML = '<p style="color: red; font-weight: bold;">Error sending email. Please try again.</p>';
+          });
       } else {
         console.warn('EmailJS library not loaded');
+        statusDiv.innerHTML += '<p style="color: red;">EmailJS not loaded. Refresh the page.</p>';
       }
       
       setTimeout(() => {
