@@ -292,6 +292,11 @@ table td {
   color: var(--text-color);
 }
 
+.testimonial-date {
+  font-size: 13px;
+  color: #999;
+}
+
 .rating-stars {
   color: #FFC107;
   font-size: 18px;
