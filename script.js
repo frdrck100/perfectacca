@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Try to send email with EmailJS (requires proper configuration)
       if (typeof emailjs !== 'undefined') {
         emailjs.send('service_4qdvesq', 'template_73gvxy8', {
-          from_name: name,
+          name: name,
           from_email: email,
           message: message,
           to_email: 'breselogan@gmail.com'
