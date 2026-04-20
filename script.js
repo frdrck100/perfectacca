@@ -77,7 +77,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize EmailJS
   if (typeof emailjs !== 'undefined') {
-    emailjs.init("-5AsgWgXz9J5VinM3"); // Replace with your EmailJS public key
+    emailjs.init({
+      publicKey: "-5AsgWgXz9J5VinM3"
+    });
   }
   
   // Handle feedback form submission
