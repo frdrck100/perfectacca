@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing - P3A</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .pricing-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .pricing-header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: var(--text-color);
+    }
+
+    .pricing-header p {
+      font-size: 1.1em;
+      color: #666;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .pricing-card {
+      background: var(--card-bg);
+      border: 2px solid var(--border-color);
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-5px);
+      border-color: #1e3a8a;
+      box-shadow: 0 10px 30px rgba(30, 58, 138, 0.2);
+    }
+
+    .pricing-card.popular {
+      border: 3px solid #1e3a8a;
+      transform: scale(1.05);
+    }
+
+    .pricing-card.popular::before {
+      content: "MOST POPULAR";
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1e3a8a;
+      color: white;
+      padding: 5px 20px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      font-weight: bold;
+    }
+
+    .pricing-card.popular {
+      position: relative;
+      margin-top: 20px;
+    }
+
+    .plan-name {
+      font-size: 1.5em;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: var(--text-color);
+    }
+
+    .plan-price {
+      font-size: 2.5em;
+      font-weight: bold;
+      color: #1e3a8a;
+      margin-bottom: 5px;
+    }
+
+    .plan-price span {
+      font-size: 0.5em;
+      color: #666;
+    }
+
+    .plan-description {
+      font-size: 0.9em;
+      color: #999;
+      margin-bottom: 30px;
+    }
+
+    .plan-features {
+      list-style: none;
+      margin: 30px 0;
+      flex-grow: 1;
+      text-align: left;
+    }
+
+    .plan-features li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-color);
+    }
+
+    .plan-features li:last-child {
+      border-bottom: none;
+    }
+
+    .plan-features li::before {
+      content: "✓ ";
+      color: #4CAF50;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .plan-button {
+      background: #1e3a8a;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: auto;
+      transition: background 0.3s ease;
+    }
+
+    .plan-button:hover {
+      background: #142d6b;
+    }
+
+    .pricing-faq {
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 12px;
+      margin-top: 50px;
+    }
+
+    .pricing-faq h2 {
+      margin-bottom: 30px;
+      color: var(--text-color);
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+    }
+
+    .faq-question {
+      font-weight: 600;
+      color: var(--text-color);
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .faq-answer {
+      color: #999;
+      padding-left: 15px;
+      border-left: 3px solid #1e3a8a;
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <button id="themeToggle" class="theme-toggle" title="Toggle Dark Mode">🌙</button>
+  <div style="flex: 1;"></div>
+</nav>
+
+<a class="fixed-feedback" href="feedback.html">Feedback</a>
+<button id="topButton" class="hidden" title="Back to top">↑</button>
+
+<header>
+  <h1>Subscription Plans</h1>
+  <p><a href="index.html" class="back-link">← Back to Home</a></p>
+</header>
+
+<div class="container pricing-container">
+  <div class="pricing-header">
+    <h1>Choose Your Plan</h1>
+    <p>Unlock premium predictions and expert analysis</p>
+  </div>
+
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="plan-name">1 Month</div>
+      <div class="plan-price">$20<span> USD</span></div>
+      <div class="plan-description">Perfect for testing</div>
+      <ul class="plan-features">
+        <li>30 days access</li>
+        <li>Daily predictions</li>
+        <li>Email support</li>
+        <li>Football tips</li>
+      </ul>
+      <button class="plan-button">Subscribe</button>
+    </div>
+
+    <div class="pricing-card">
+      <div class="plan-name">6 Months</div>
+      <div class="plan-price">$100<span> USD</span></div>
+      <div class="plan-description">Best for regular users</div>
+      <ul class="plan-features">
+        <li>180 days access</li>
+        <li>Daily predictions</li>
+        <li>Priority support</li>
+        <li>Football tips</li>
+        <li>Win rate analytics</li>
+      </ul>
+      <button class="plan-button">Subscribe</button>
+    </div>
+
+    <div class="pricing-card popular">
+      <div class="plan-name">1 Year</div>
+      <div class="plan-price">$180<span> USD</span></div>
+      <div class="plan-description">Most popular choice</div>
+      <ul class="plan-features">
+        <li>365 days access</li>
+        <li>Daily predictions</li>
+        <li>Priority support</li>
+        <li>Football tips</li>
+        <li>Win rate analytics</li>
+        <li>Monthly reports</li>
+        <li>25% savings</li>
+      </ul>
+      <button class="plan-button">Subscribe</button>
+    </div>
+
+    <div class="pricing-card">
+      <div class="plan-name">Forever</div>
+      <div class="plan-price">$500<span> USD</span></div>
+      <div class="plan-description">Lifetime access</div>
+      <ul class="plan-features">
+        <li>Lifetime access</li>
+        <li>Daily predictions</li>
+        <li>VIP support</li>
+        <li>Football tips</li>
+        <li>Win rate analytics</li>
+        <li>Monthly reports</li>
+        <li>Exclusive tips</li>
+        <li>One-time payment</li>
+      </ul>
+      <button class="plan-button">Subscribe</button>
+    </div>
+  </div>
+
+  <div class="pricing-faq">
+    <h2>Frequently Asked Questions</h2>
+    
+    <div class="faq-item">
+      <div class="faq-question">How do I get started?</div>
+      <div class="faq-answer">Click on any subscription plan above and complete the payment. You'll instantly gain access to all premium features.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Can I upgrade my plan?</div>
+      <div class="faq-answer">Yes! You can upgrade from a shorter plan to a longer one at any time. We'll prorate the difference.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Is there a money-back guarantee?</div>
+      <div class="faq-answer">We offer a 7-day money-back guarantee. If you're not satisfied, contact our support team for a full refund.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Can I cancel anytime?</div>
+      <div class="faq-answer">Yes! You can cancel your subscription at any time. No hidden fees or long-term contracts.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">What payment methods do you accept?</div>
+      <div class="faq-answer">We accept all major credit cards, debit cards, and digital payment methods via our secure payment processor.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  &copy; 2026 Perfect 3 Accumulator P3A. All Rights Reserved.
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

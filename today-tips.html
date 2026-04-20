@@ -19,16 +19,19 @@
         filter: blur(5px);
       }
       .unlock-btn {
-        background-color: #007bff;
+        background-color: #1e3a8a;
         color: white;
         border: none;
-        padding: 8px 12px;
-        border-radius: 4px;
+        padding: 12px 24px;
+        border-radius: 6px;
         cursor: pointer;
-        font-size: 14px;
+        font-size: 16px;
+        font-weight: 600;
+        transition: all 0.3s ease;
       }
       .unlock-btn:hover {
-        background-color: #0056b3;
+        background-color: #142d6b;
+        transform: scale(1.05);
       }
     </style>
     <table>
@@ -44,7 +47,7 @@
         </td>
         <td style="text-align: center;">
           <div style="text-align: center;">
-            <button class="unlock-btn" onclick="alert('Payment coming soon!')">Click here to unlock</button>
+            <button class="unlock-btn" onclick="window.location.href='pricing.html'">Click to Unlock</button>
           </div>
         </td>
       </tr>
