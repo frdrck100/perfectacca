@@ -77,7 +77,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize EmailJS
   if (typeof emailjs !== 'undefined') {
-    emailjs.init("ILgtLjY2mQDxHXDIJ");
+    emailjs.init({
+      publicKey: "ILgtLjY2mQDxHXDIJ"
+    });
   }
   
   // Handle feedback form submission
