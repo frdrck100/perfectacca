@@ -74,4 +74,46 @@ document.addEventListener("DOMContentLoaded", () => {
   if (tabButtons) {
     loadTab('yesterday-tips.html', tabButtons);
   }
+
+  // Handle feedback form submission
+  const feedbackForm = document.getElementById('feedbackForm');
+  if (feedbackForm) {
+    feedbackForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('feedbackName').value;
+      const email = document.getElementById('feedbackEmail').value;
+      const message = document.getElementById('feedbackMessage').value;
+      
+      if (!name || !email || !message) {
+        alert('Please fill in all fields');
+        return;
+      }
+      
+      // Submit to Formspree
+      fetch('https://formspree.io/f/xrerllkg', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: message
+        })
+      })
+      .then(response => {
+        if (response.ok) {
+          alert('Thank you! Your feedback has been submitted successfully. We appreciate your input!');
+          feedbackForm.reset();
+        } else {
+          alert('Error submitting feedback. Please try again.');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Error submitting feedback. Please try again.');
+      });
+    });
+  }
 });
