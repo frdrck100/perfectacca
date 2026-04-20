@@ -1,5 +1,91 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap');
 
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(30, 58, 138, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(30, 58, 138, 0.6); }
+}
+
+/* Floating Football Elements */
+.floating-ball {
+  position: fixed;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle at 30% 30%, #fff, #1e3a8a);
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(30, 58, 138, 0.3);
+  animation: float 6s ease-in-out infinite;
+  z-index: 1;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+}
+
+.floating-ball::before {
+  content: '⚽';
+  animation: spin 8s linear infinite;
+}
+
+.ball-top-left {
+  top: 100px;
+  left: 20px;
+  animation-delay: 0s;
+}
+
+.ball-top-right {
+  top: 150px;
+  right: 30px;
+  animation-delay: 1s;
+}
+
+.ball-bottom-left {
+  bottom: 200px;
+  left: 40px;
+  animation-delay: 1.5s;
+}
+
+.ball-bottom-right {
+  bottom: 150px;
+  right: 30px;
+  animation-delay: 2s;
+}
+
+@media (max-width: 768px) {
+  .floating-ball {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+  }
+}
+
 /* Theme Variables */
 :root {
   --bg-color: #f5f5f5;
@@ -39,10 +125,35 @@ header {
   padding: 40px 20px;
   background: var(--header-bg);
   color: white;
+  position: relative;
+  overflow: hidden;
 }
 
-header h1 { font-size: 32px; margin-bottom: 10px; }
-header p { font-size: 18px; }
+header::before {
+  content: '⚽ ⚽ ⚽';
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  opacity: 0.1;
+  font-size: 3em;
+  animation: float 8s ease-in-out infinite;
+}
+
+header h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 2;
+  animation: slideInUp 0.8s ease-out;
+}
+
+header p {
+  font-size: 18px;
+  position: relative;
+  z-index: 2;
+  animation: slideInUp 0.8s ease-out 0.2s both;
+}
 
 .container {
   flex: 1;
@@ -67,14 +178,32 @@ header p { font-size: 18px; }
   transition: transform 0.3s, box-shadow 0.3s;
   box-shadow: 0 5px 15px var(--card-shadow);
   text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  animation: slideInUp 0.8s ease-out both;
 }
 
-.tips { background: #4CAF50; }
-.feedback { background: #FF9800; }
+.box::before {
+  content: '⚽';
+  position: absolute;
+  font-size: 2em;
+  opacity: 0.1;
+  animation: spin 10s linear infinite;
+}
+
+.tips { 
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  animation-delay: 0.2s;
+}
+
+.feedback { 
+  background: linear-gradient(135deg, #FF9800, #fb8c00);
+  animation-delay: 0.4s;
+}
 
 .box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
 }
 .back-link {
   color: white;
@@ -92,12 +221,24 @@ nav {
   background: var(--header-bg);
   color: white;
   padding: 10px 20px;
-  box-shadow: 0 2px 5px var(--card-shadow);
+  box-shadow: 0 2px 5px var(--card-shadow), 0 0 20px rgba(30, 58, 138, 0.2);
   z-index: 1000;
   transition: transform 0.3s ease;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+}
+
+nav::before {
+  content: '⚽';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.05;
+  font-size: 3em;
+  animation: float 6s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .theme-toggle {
