@@ -7,88 +7,202 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(30, 58, 138, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(30, 58, 138, 0.6); }
+    }
+
     .pricing-container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 40px 20px;
     }
 
+    .floating-ball {
+      position: fixed;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle at 30% 30%, #fff, #1e3a8a);
+      border-radius: 50%;
+      box-shadow: 0 10px 30px rgba(30, 58, 138, 0.3);
+      animation: float 6s ease-in-out infinite;
+      z-index: 1;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+    }
+
+    .floating-ball::before {
+      content: '⚽';
+      animation: spin 8s linear infinite;
+    }
+
+    .ball-top-left {
+      top: 100px;
+      left: 20px;
+      animation-delay: 0s;
+    }
+
+    .ball-bottom-right {
+      bottom: 150px;
+      right: 30px;
+      animation-delay: 2s;
+    }
+
     .pricing-header {
       text-align: center;
       margin-bottom: 50px;
+      animation: slideInUp 0.8s ease-out;
     }
 
     .pricing-header h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
+      font-size: 3em;
+      margin-bottom: 15px;
       color: var(--text-color);
+      background: linear-gradient(135deg, #1e3a8a, #3b5bdb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
     }
 
     .pricing-header p {
-      font-size: 1.1em;
+      font-size: 1.2em;
       color: #666;
+      margin-bottom: 30px;
+    }
+
+    .header-icon {
+      font-size: 4em;
+      margin-bottom: 20px;
+      animation: float 4s ease-in-out infinite;
     }
 
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 30px;
-      margin-bottom: 40px;
+      margin-bottom: 50px;
     }
 
     .pricing-card {
-      background: var(--card-bg);
+      background: linear-gradient(135deg, var(--card-bg), rgba(30, 58, 138, 0.05));
       border: 2px solid var(--border-color);
-      border-radius: 12px;
-      padding: 30px;
+      border-radius: 16px;
+      padding: 35px;
       text-align: center;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       display: flex;
       flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      animation: slideInUp 0.8s ease-out both;
+    }
+
+    .pricing-card:nth-child(1) { animation-delay: 0.1s; }
+    .pricing-card:nth-child(2) { animation-delay: 0.2s; }
+    .pricing-card:nth-child(3) { animation-delay: 0.3s; }
+    .pricing-card:nth-child(4) { animation-delay: 0.4s; }
+
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .pricing-card:hover::before {
+      left: 100%;
     }
 
     .pricing-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-10px) scale(1.02);
       border-color: #1e3a8a;
-      box-shadow: 0 10px 30px rgba(30, 58, 138, 0.2);
+      box-shadow: 0 20px 50px rgba(30, 58, 138, 0.3);
     }
 
     .pricing-card.popular {
       border: 3px solid #1e3a8a;
-      transform: scale(1.05);
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.1), rgba(30, 58, 138, 0.05));
+      animation: glow 2s ease-in-out infinite, slideInUp 0.8s ease-out 0.3s both;
     }
 
-    .pricing-card.popular::before {
-      content: "MOST POPULAR";
+    .pricing-card.popular:hover {
+      transform: translateY(-15px) scale(1.05);
+    }
+
+    .popular-badge {
       position: absolute;
-      top: -15px;
+      top: -12px;
       left: 50%;
       transform: translateX(-50%);
-      background: #1e3a8a;
+      background: linear-gradient(135deg, #1e3a8a, #3b5bdb);
       color: white;
-      padding: 5px 20px;
-      border-radius: 20px;
-      font-size: 0.9em;
-      font-weight: bold;
+      padding: 8px 25px;
+      border-radius: 25px;
+      font-size: 0.85em;
+      font-weight: 700;
+      box-shadow: 0 5px 15px rgba(30, 58, 138, 0.4);
+      animation: pulse 2s ease-in-out infinite;
     }
 
     .pricing-card.popular {
-      position: relative;
-      margin-top: 20px;
+      margin-top: 25px;
+    }
+
+    .plan-icon {
+      font-size: 3em;
+      margin-bottom: 15px;
+      animation: float 4s ease-in-out infinite;
     }
 
     .plan-name {
-      font-size: 1.5em;
-      font-weight: 600;
-      margin-bottom: 15px;
+      font-size: 1.6em;
+      font-weight: 700;
+      margin-bottom: 10px;
       color: var(--text-color);
     }
 
     .plan-price {
-      font-size: 2.5em;
-      font-weight: bold;
-      color: #1e3a8a;
-      margin-bottom: 5px;
+      font-size: 3em;
+      font-weight: 900;
+      background: linear-gradient(135deg, #1e3a8a, #3b5bdb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 10px 0;
     }
 
     .plan-price span {
@@ -97,9 +211,10 @@
     }
 
     .plan-description {
-      font-size: 0.9em;
+      font-size: 0.95em;
       color: #999;
       margin-bottom: 30px;
+      font-style: italic;
     }
 
     .plan-features {
@@ -110,9 +225,15 @@
     }
 
     .plan-features li {
-      padding: 10px 0;
+      padding: 12px 0;
       border-bottom: 1px solid var(--border-color);
       color: var(--text-color);
+      transition: all 0.3s ease;
+    }
+
+    .plan-features li:hover {
+      padding-left: 10px;
+      color: #1e3a8a;
     }
 
     .plan-features li:last-child {
@@ -120,56 +241,127 @@
     }
 
     .plan-features li::before {
-      content: "✓ ";
-      color: #4CAF50;
-      font-weight: bold;
+      content: "⚽ ";
       margin-right: 10px;
+      font-weight: bold;
     }
 
     .plan-button {
-      background: #1e3a8a;
+      background: linear-gradient(135deg, #1e3a8a, #3b5bdb);
       color: white;
-      padding: 12px 30px;
+      padding: 14px 35px;
       border: none;
-      border-radius: 8px;
-      font-size: 1em;
+      border-radius: 10px;
+      font-size: 1.05em;
       cursor: pointer;
-      font-weight: 600;
+      font-weight: 700;
       margin-top: auto;
-      transition: background 0.3s ease;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .plan-button:hover {
-      background: #142d6b;
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(30, 58, 138, 0.5);
+      background: linear-gradient(135deg, #3b5bdb, #1e3a8a);
+    }
+
+    .plan-button:active {
+      transform: translateY(-1px);
     }
 
     .pricing-faq {
-      background: var(--card-bg);
-      padding: 40px;
-      border-radius: 12px;
-      margin-top: 50px;
+      background: linear-gradient(135deg, var(--card-bg), rgba(30, 58, 138, 0.05));
+      padding: 50px;
+      border-radius: 16px;
+      margin-top: 60px;
+      border: 2px solid var(--border-color);
+      animation: slideInUp 1s ease-out 0.5s both;
     }
 
     .pricing-faq h2 {
-      margin-bottom: 30px;
+      margin-bottom: 40px;
       color: var(--text-color);
+      font-size: 2em;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .pricing-faq h2::before {
+      content: '❓';
+      font-size: 1.2em;
+      animation: float 4s ease-in-out infinite;
     }
 
     .faq-item {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
+      animation: slideInUp 0.8s ease-out both;
     }
 
+    .faq-item:nth-child(1) { animation-delay: 0.6s; }
+    .faq-item:nth-child(2) { animation-delay: 0.7s; }
+    .faq-item:nth-child(3) { animation-delay: 0.8s; }
+    .faq-item:nth-child(4) { animation-delay: 0.9s; }
+    .faq-item:nth-child(5) { animation-delay: 1s; }
+
     .faq-question {
-      font-weight: 600;
+      font-weight: 700;
       color: var(--text-color);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    .faq-question:hover {
+      background: rgba(30, 58, 138, 0.1);
+      color: #1e3a8a;
+      padding-left: 20px;
+    }
+
+    .faq-question::before {
+      content: '▶';
+      font-size: 0.8em;
+      transition: transform 0.3s ease;
     }
 
     .faq-answer {
       color: #999;
-      padding-left: 15px;
-      border-left: 3px solid #1e3a8a;
+      padding-left: 35px;
+      border-left: 4px solid #1e3a8a;
+      padding-top: 10px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .floating-ball {
+        width: 60px;
+        height: 60px;
+        font-size: 30px;
+      }
+
+      .pricing-header h1 {
+        font-size: 2em;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-card.popular {
+        margin-top: 0;
+      }
+
+      .pricing-faq {
+        padding: 30px;
+      }
     }
   </style>
 </head>
@@ -182,6 +374,9 @@
 <a class="fixed-feedback" href="feedback.html">Feedback</a>
 <button id="topButton" class="hidden" title="Back to top">↑</button>
 
+<div class="floating-ball ball-top-left"></div>
+<div class="floating-ball ball-bottom-right"></div>
+
 <header>
   <h1>Subscription Plans</h1>
   <p><a href="index.html" class="back-link">← Back to Home</a></p>
@@ -189,12 +384,14 @@
 
 <div class="container pricing-container">
   <div class="pricing-header">
-    <h1>Choose Your Plan</h1>
-    <p>Unlock premium predictions and expert analysis</p>
+    <div class="header-icon">⚽</div>
+    <h1>Unlock Your Winning Edge</h1>
+    <p>Join thousands of profitable predictors. Choose your plan and start winning today!</p>
   </div>
 
   <div class="pricing-grid">
     <div class="pricing-card">
+      <div class="plan-icon">📅</div>
       <div class="plan-name">1 Month</div>
       <div class="plan-price">$20<span> USD</span></div>
       <div class="plan-description">Perfect for testing</div>
@@ -203,11 +400,13 @@
         <li>Daily predictions</li>
         <li>Email support</li>
         <li>Football tips</li>
+        <li>All markets</li>
       </ul>
-      <button class="plan-button">Subscribe</button>
+      <button class="plan-button">Get Started</button>
     </div>
 
     <div class="pricing-card">
+      <div class="plan-icon">📊</div>
       <div class="plan-name">6 Months</div>
       <div class="plan-price">$100<span> USD</span></div>
       <div class="plan-description">Best for regular users</div>
@@ -217,14 +416,17 @@
         <li>Priority support</li>
         <li>Football tips</li>
         <li>Win rate analytics</li>
+        <li>All markets</li>
       </ul>
-      <button class="plan-button">Subscribe</button>
+      <button class="plan-button">Subscribe Now</button>
     </div>
 
     <div class="pricing-card popular">
+      <div class="popular-badge">⭐ MOST POPULAR ⭐</div>
+      <div class="plan-icon">🏆</div>
       <div class="plan-name">1 Year</div>
       <div class="plan-price">$180<span> USD</span></div>
-      <div class="plan-description">Most popular choice</div>
+      <div class="plan-description">Most popular choice - Save 25%</div>
       <ul class="plan-features">
         <li>365 days access</li>
         <li>Daily predictions</li>
@@ -232,15 +434,17 @@
         <li>Football tips</li>
         <li>Win rate analytics</li>
         <li>Monthly reports</li>
-        <li>25% savings</li>
+        <li>Exclusive tips</li>
+        <li>All markets</li>
       </ul>
-      <button class="plan-button">Subscribe</button>
+      <button class="plan-button">Subscribe Now</button>
     </div>
 
     <div class="pricing-card">
+      <div class="plan-icon">♾️</div>
       <div class="plan-name">Forever</div>
       <div class="plan-price">$500<span> USD</span></div>
-      <div class="plan-description">Lifetime access</div>
+      <div class="plan-description">Ultimate - Lifetime access</div>
       <ul class="plan-features">
         <li>Lifetime access</li>
         <li>Daily predictions</li>
@@ -251,7 +455,7 @@
         <li>Exclusive tips</li>
         <li>One-time payment</li>
       </ul>
-      <button class="plan-button">Subscribe</button>
+      <button class="plan-button">Unlock Forever</button>
     </div>
   </div>
 
@@ -260,27 +464,27 @@
     
     <div class="faq-item">
       <div class="faq-question">How do I get started?</div>
-      <div class="faq-answer">Click on any subscription plan above and complete the payment. You'll instantly gain access to all premium features.</div>
+      <div class="faq-answer">Click on any subscription plan above and complete the payment. You'll instantly gain access to all premium features and daily predictions.</div>
     </div>
 
     <div class="faq-item">
       <div class="faq-question">Can I upgrade my plan?</div>
-      <div class="faq-answer">Yes! You can upgrade from a shorter plan to a longer one at any time. We'll prorate the difference.</div>
+      <div class="faq-answer">Yes! You can upgrade from a shorter plan to a longer one at any time. We'll prorate the difference and credit your account accordingly.</div>
     </div>
 
     <div class="faq-item">
       <div class="faq-question">Is there a money-back guarantee?</div>
-      <div class="faq-answer">We offer a 7-day money-back guarantee. If you're not satisfied, contact our support team for a full refund.</div>
+      <div class="faq-answer">Absolutely! We offer a 7-day money-back guarantee. If you're not satisfied, contact our support team for a full refund, no questions asked.</div>
     </div>
 
     <div class="faq-item">
       <div class="faq-question">Can I cancel anytime?</div>
-      <div class="faq-answer">Yes! You can cancel your subscription at any time. No hidden fees or long-term contracts.</div>
+      <div class="faq-answer">Yes! You can cancel your subscription at any time. No hidden fees, no long-term contracts, and no penalties. Your account remains active until the end of your billing period.</div>
     </div>
 
     <div class="faq-item">
       <div class="faq-question">What payment methods do you accept?</div>
-      <div class="faq-answer">We accept all major credit cards, debit cards, and digital payment methods via our secure payment processor.</div>
+      <div class="faq-answer">We accept all major credit cards, debit cards, and digital payment methods via our secure payment processor. Your transactions are 100% encrypted and safe.</div>
     </div>
   </div>
 </div>
